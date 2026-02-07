@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wedding</title>
+<style>
+body{margin:0;font-family:sans-serif;text-align:center;background:#f6f2ea}
+#cover{position:fixed;inset:0;background:#b9975b;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center}
+button{padding:12px 25px;border:none;border-radius:25px;background:#b9975b;color:#fff}
+section{padding:60px 20px}
+.card{background:#fff;padding:20px;border-radius:15px;margin:auto;max-width:500px}
+.gallery{display:flex;overflow:auto;gap:10px}
+.gallery img{width:200px;border-radius:10px}
+.count{display:flex;justify-content:center;gap:10px}
+.box{background:#b9975b;color:#fff;padding:10px;border-radius:10px}
+</style>
+</head>
+
+<body>
+
+<div id="cover">
+<h3 id="guest"></h3>
+<h1>Undangan Pernikahan</h1>
+<button onclick="openInvite()">Buka Undangan</button>
+</div>
+
+<audio id="music" loop>
+<source src="musik.mp3">
+</audio>
+
+<section>
+<h2>Rina & Andi</h2>
+<p>12 Desember 2026</p>
+</section>
+
+<section>
+<div class="card">
+<h3>Countdown</h3>
+<div class="count">
+<div class="box" id="d"></div>
+<div class="box" id="h"></div>
+<div class="box" id="m"></div>
+<div class="box" id="s"></div>
+</div>
+</div>
+</section>
+
+<section>
+<h3>Galeri</h3>
+<div class="gallery">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+</div>
+</section>
+
+<script>
+const p=new URLSearchParams(location.search);
+guest.innerHTML="Kepada Yth.<br><b>"+(p.get("to")||"Tamu Undangan")+"</b>";
+
+function openInvite(){
+cover.style.display="none";
+music.play();
+}
+
+const date=new Date("Dec 12, 2026 08:00:00").getTime();
+setInterval(()=>{
+let g=date-new Date().getTime();
+d.innerHTML=Math.floor(g/86400000)+"H";
+h.innerHTML=Math.floor(g/3600000%24)+"J";
+m.innerHTML=Math.floor(g/60000%60)+"M";
+s.innerHTML=Math.floor(g/1000%60)+"D";
+},1000);
+</script>
+
+</body>
+</html>
