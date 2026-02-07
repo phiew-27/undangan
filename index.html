@@ -1,36 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wedding</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Undangan Pernikahan</title>
+
 <style>
-body{margin:0;font-family:sans-serif;text-align:center;background:#f6f2ea}
-#cover{position:fixed;inset:0;background:#b9975b;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center}
-button{padding:12px 25px;border:none;border-radius:25px;background:#b9975b;color:#fff}
-section{padding:60px 20px}
-.card{background:#fff;padding:20px;border-radius:15px;margin:auto;max-width:500px}
-.gallery{display:flex;overflow:auto;gap:10px}
-.gallery img{width:200px;border-radius:10px}
-.count{display:flex;justify-content:center;gap:10px}
-.box{background:#b9975b;color:#fff;padding:10px;border-radius:10px}
+body{
+  margin:0;
+  font-family:sans-serif;
+  text-align:center;
+  background:#f6f2ea;
+}
+
+/* COVER */
+#cover{
+  position:fixed;
+  inset:0;
+  background:#b9975b;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+button{
+  padding:12px 22px;
+  margin:8px;
+  border:none;
+  border-radius:25px;
+  background:#b9975b;
+  color:white;
+  font-size:16px;
+}
+
+/* CARD */
+section{ padding:60px 20px; }
+
+.card{
+  background:white;
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+  border-radius:15px;
+}
+
+/* GALERI */
+.gallery{
+  display:flex;
+  overflow:auto;
+  gap:10px;
+}
+.gallery img{
+  width:200px;
+  border-radius:10px;
+}
+
+/* COUNTDOWN */
+.count{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+.box{
+  background:#b9975b;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+}
 </style>
 </head>
 
 <body>
 
-<div id="cover">
-<h3 id="guest"></h3>
-<h1>Undangan Pernikahan</h1>
-<button onclick="openInvite()">Buka Undangan</button>
-</div>
-
+<!-- AUDIO -->
 <audio id="music" loop>
-<source src="musik.mp3">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- COVER -->
+<div id="cover">
+  <h3 id="guest"></h3>
+  <h1>Undangan Pernikahan</h1>
+
+  <button onclick="openInvite()">Buka Undangan</button>
+</div>
+
+<!-- ISI -->
 <section>
 <h2>Rina & Andi</h2>
 <p>12 Desember 2026</p>
+
+<!-- TOMBOL MUSIK MANUAL (PASTI BUNYI) -->
+<button onclick="playMusic()">🎵 Putar Musik</button>
+<button onclick="pauseMusic()">⏸ Pause</button>
 </section>
 
 <section>
@@ -55,15 +119,26 @@ section{padding:60px 20px}
 </section>
 
 <script>
-const p=new URLSearchParams(location.search);
-guest.innerHTML="Kepada Yth.<br><b>"+(p.get("to")||"Tamu Undangan")+"</b>";
+const music = document.getElementById("music");
 
+/* ===== NAMA TAMU ===== */
+const p = new URLSearchParams(location.search);
+document.getElementById("guest").innerHTML =
+"Kepada Yth.<br><b>"+(p.get("to")||"Tamu Undangan")+"</b>";
+
+/* ===== BUKA AMPLOP + AUTOPLAY ===== */
 function openInvite(){
-cover.style.display="none";
-music.play();
+  document.getElementById("cover").style.display="none";
+  music.play(); // autoplay setelah klik (AMAN)
 }
 
+/* ===== TOMBOL MANUAL ===== */
+function playMusic(){ music.play(); }
+function pauseMusic(){ music.pause(); }
+
+/* ===== COUNTDOWN ===== */
 const date=new Date("Dec 12, 2026 08:00:00").getTime();
+
 setInterval(()=>{
 let g=date-new Date().getTime();
 d.innerHTML=Math.floor(g/86400000)+"H";
@@ -74,4 +149,306 @@ s.innerHTML=Math.floor(g/1000%60)+"D";
 </script>
 
 </body>
-</html>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Undangan Pernikahan</title>
+
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  text-align:center;
+  background:#f6f2ea;
+}
+
+/* COVER */
+#cover{
+  position:fixed;
+  inset:0;
+  background:#b9975b;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+button{
+  padding:12px 22px;
+  margin:8px;
+  border:none;
+  border-radius:25px;
+  background:#b9975b;
+  color:white;
+  font-size:16px;
+}
+
+/* CARD */
+section{ padding:60px 20px; }
+
+.card{
+  background:white;
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+  border-radius:15px;
+}
+
+/* GALERI */
+.gallery{
+  display:flex;
+  overflow:auto;
+  gap:10px;
+}
+.gallery img{
+  width:200px;
+  border-radius:10px;
+}
+
+/* COUNTDOWN */
+.count{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+.box{
+  background:#b9975b;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- COVER -->
+<div id="cover">
+  <h3 id="guest"></h3>
+  <h1>Undangan Pernikahan</h1>
+
+  <button onclick="openInvite()">Buka Undangan</button>
+</div>
+
+<!-- ISI -->
+<section>
+<h2>Rina & Andi</h2>
+<p>12 Desember 2026</p>
+
+<!-- TOMBOL MUSIK MANUAL (PASTI BUNYI) -->
+<button onclick="playMusic()">🎵 Putar Musik</button>
+<button onclick="pauseMusic()">⏸ Pause</button>
+</section>
+
+<section>
+<div class="card">
+<h3>Countdown</h3>
+<div class="count">
+<div class="box" id="d"></div>
+<div class="box" id="h"></div>
+<div class="box" id="m"></div>
+<div class="box" id="s"></div>
+</div>
+</div>
+</section>
+
+<section>
+<h3>Galeri</h3>
+<div class="gallery">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+</div>
+</section>
+
+<script>
+const music = document.getElementById("music");
+
+/* ===== NAMA TAMU ===== */
+const p = new URLSearchParams(location.search);
+document.getElementById("guest").innerHTML =
+"Kepada Yth.<br><b>"+(p.get("to")||"Tamu Undangan")+"</b>";
+
+/* ===== BUKA AMPLOP + AUTOPLAY ===== */
+function openInvite(){
+  document.getElementById("cover").style.display="none";
+  music.play(); // autoplay setelah klik (AMAN)
+}
+
+/* ===== TOMBOL MANUAL ===== */
+function playMusic(){ music.play(); }
+function pauseMusic(){ music.pause(); }
+
+/* ===== COUNTDOWN ===== */
+const date=new Date("Dec 12, 2026 08:00:00").getTime();
+
+setInterval(()=>{
+let g=date-new Date().getTime();
+d.innerHTML=Math.floor(g/86400000)+"H";
+h.innerHTML=Math.floor(g/3600000%24)+"J";
+m.innerHTML=Math.floor(g/60000%60)+"M";
+s.innerHTML=Math.floor(g/1000%60)+"D";
+},1000);
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Undangan Pernikahan</title>
+
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  text-align:center;
+  background:#f6f2ea;
+}
+
+/* COVER */
+#cover{
+  position:fixed;
+  inset:0;
+  background:#b9975b;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+button{
+  padding:12px 22px;
+  margin:8px;
+  border:none;
+  border-radius:25px;
+  background:#b9975b;
+  color:white;
+  font-size:16px;
+}
+
+/* CARD */
+section{ padding:60px 20px; }
+
+.card{
+  background:white;
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+  border-radius:15px;
+}
+
+/* GALERI */
+.gallery{
+  display:flex;
+  overflow:auto;
+  gap:10px;
+}
+.gallery img{
+  width:200px;
+  border-radius:10px;
+}
+
+/* COUNTDOWN */
+.count{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+.box{
+  background:#b9975b;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- COVER -->
+<div id="cover">
+  <h3 id="guest"></h3>
+  <h1>Undangan Pernikahan</h1>
+
+  <button onclick="openInvite()">Buka Undangan</button>
+</div>
+
+<!-- ISI -->
+<section>
+<h2>Rina & Andi</h2>
+<p>12 Desember 2026</p>
+
+<!-- TOMBOL MUSIK MANUAL (PASTI BUNYI) -->
+<button onclick="playMusic()">🎵 Putar Musik</button>
+<button onclick="pauseMusic()">⏸ Pause</button>
+</section>
+
+<section>
+<div class="card">
+<h3>Countdown</h3>
+<div class="count">
+<div class="box" id="d"></div>
+<div class="box" id="h"></div>
+<div class="box" id="m"></div>
+<div class="box" id="s"></div>
+</div>
+</div>
+</section>
+
+<section>
+<h3>Galeri</h3>
+<div class="gallery">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+</div>
+</section>
+
+<script>
+const music = document.getElementById("music");
+
+/* ===== NAMA TAMU ===== */
+const p = new URLSearchParams(location.search);
+document.getElementById("guest").innerHTML =
+"Kepada Yth.<br><b>"+(p.get("to")||"Tamu Undangan")+"</b>";
+
+/* ===== BUKA AMPLOP + AUTOPLAY ===== */
+function openInvite(){
+  document.getElementById("cover").style.display="none";
+  music.play(); // autoplay setelah klik (AMAN)
+}
+
+/* ===== TOMBOL MANUAL ===== */
+function playMusic(){ music.play(); }
+function pauseMusic(){ music.pause(); }
+
+/* ===== COUNTDOWN ===== */
+const date=new Date("Dec 12, 2026 08:00:00").getTime();
+
+setInterval(()=>{
+let g=date-new Date().getTime();
+d.innerHTML=Math.floor(g/86400000)+"H";
+h.innerHTML=Math.floor(g/3600000%24)+"J";
+m.innerHTML=Math.floor(g/60000%60)+"M";
+s.innerHTML=Math.floor(g/1000%60)+"D";
+},1000);
+</script>
+
+</body>
+</html
